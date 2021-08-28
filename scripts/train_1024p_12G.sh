@@ -1,4 +1,3 @@
 ############## To train images at 2048 x 1024 resolution after training 1024 x 512 resolution models #############
 ##### Using GPUs with 12G memory (not tested)
-# Using labels only
-python train.py --name label2city_1024p --netG local --ngf 32 --num_D 3 --load_pretrain checkpoints/label2city_512p/ --niter_fix_global 20 --resize_or_crop crop --fineSize 1024
+python train.py --name 0828buccal --no_instance --dataroot datasets/preprocessing-d20210809_buccal_and_lingual_image/ --dataset_suffix _buccal --netG local --ngf 32 --num_D 3 --niter_fix_global 20 --label_nc 0 --resize_or_crop resize_and_crop --fineSize 1024 --input_nc 3 --output_nc 3 --save_epoch_freq 50 --save_latest_freq 2000
