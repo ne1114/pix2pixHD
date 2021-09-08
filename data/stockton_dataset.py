@@ -14,7 +14,7 @@ class StocktonDataset(BaseDataset):
             dataset = json.load(f)
         
         self.ids = dataset[opt.phase]   # Get Training doc ids
-        self.suffix = self.opt.dataset_suffix   # Get Dataset_suffix []
+        self.suffix = "" #self.opt.dataset_suffix   # Get Dataset_suffix []
         self.dataset_size = len(self.ids) 
         
       
@@ -27,8 +27,8 @@ class StocktonDataset(BaseDataset):
         # split AB image into A and B
         w, h = AB.size
         w2 = int(w / 2)
-        A = AB.crop((0, 0, w2, h))
-        B = AB.crop((w2, 0, w, h))
+        B = AB.crop((0, 0, w2, h))
+        A = AB.crop((w2, 0, w, h))
      
         params = get_params(self.opt, A.size)
         if self.opt.label_nc == 0:
