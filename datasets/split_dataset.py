@@ -94,7 +94,7 @@ CASE_BLACKLIST_IS_EMPTY_PREP = [
 ]
 
 json_dict = {"train":[], "test":[]}
-for subdirs, dirs, files in os.walk("/home/jeonghoon/Projects/pix2pixHD/datasets/preprocessing-d20210831_vertical_slice"):
+for subdirs, dirs, files in os.walk("/home/jeonghoon/Projects/pix2pixHD/datasets/preprocessing-d20210908_vertical_slice"):
     for dir in dirs:
         if train_count != 0:
             if dir in CASE_BLACKLIST_IS_EMPTY_PREP:
@@ -107,5 +107,5 @@ for subdirs, dirs, files in os.walk("/home/jeonghoon/Projects/pix2pixHD/datasets
                 continue
             json_dict["test"].append(dir)
 
-with open("/home/jeonghoon/Projects/pix2pixHD/datasets/preprocessing-d20210831_vertical_slice/dataset.json", "w") as fp:
+with open("/home/jeonghoon/Projects/pix2pixHD/datasets/preprocessing-d20210908_vertical_slice/dataset.json", "w") as fp:
     json.dump(json_dict, fp)

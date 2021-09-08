@@ -1,2 +1,2 @@
 ### Using labels only
-python train.py --name 0906Slice --no_instance --dataroot datasets/preprocessing-d20210831_vertical_slice/  --netG local --ngf 32 --num_D 3 --niter_fix_global 20 --label_nc 0 --resize_or_crop none --input_nc 3 --output_nc 3 --save_epoch_freq 50 --save_latest_freq 2000
+python train.py --name 0908Slice_wo_model --no_instance --dataroot datasets/preprocessing-d20210908_vertical_slice/  --netG local --ngf 32 --num_D 3 --tf_log --niter_fix_global 20 --label_nc 0 --resize_or_crop none --input_nc 3 --output_nc 3 --save_epoch_freq 100 --save_latest_freq 2000
