@@ -1,7 +1,6 @@
 import os
 import json 
     
-train_count = 1910
 CASE_BLACKLIST_IS_EMPTY_PREP = [
     "c13c51dd03dcd4b076f3b60e1c83231c1f6339e66d3d6d82162185ae84654b43",
     "02035bc433035cf65eda06d75f628e4c115b9353b6ddc05d3e092d04b374b027",
@@ -93,19 +92,23 @@ CASE_BLACKLIST_IS_EMPTY_PREP = [
     "1172d1a85ea792015112b6ed67fe8a1cda1c902350aea789fab9ad211e1b3d4a",
 ]
 
+dataset_path = "/home/jeonghoon/Projects/pix2pixHD/datasets/preprocessing-d20210910_vertical_slice"
+train_count = len(os.listdir(dataset_path)) // 10 * 9
+
 json_dict = {"train":[], "test":[]}
-for subdirs, dirs, files in os.walk("/home/jeonghoon/Projects/pix2pixHD/datasets/preprocessing-d20210908_vertical_slice"):
+for subdirs, dirs, files in os.walk(dataset_path):
     for dir in dirs:
         if train_count != 0:
             if dir in CASE_BLACKLIST_IS_EMPTY_PREP:
                 train_count -= 1 
                 continue
-            json_dict["train"].append(dir)
-            train_count -= 1 
+            if f"{dir}.png" in os.listdir( f"{dataset_path}/{dir}"):
+                json_dict["train"].append(dir)
+                train_count -= 1 
         else :
             if dir in CASE_BLACKLIST_IS_EMPTY_PREP:
                 continue
             json_dict["test"].append(dir)
 
-with open("/home/jeonghoon/Projects/pix2pixHD/datasets/preprocessing-d20210908_vertical_slice/dataset.json", "w") as fp:
+with open(f"{dataset_path}/dataset.json", "w") as fp:
     json.dump(json_dict, fp)

@@ -2,8 +2,8 @@ import os
 from PIL import Image, ImageChops
 from numpy import concatenate
 
-result_path = "/home/jeonghoon/Projects/pix2pixHD/results/0906Slice/test_latest"
-input_path = "/home/jeonghoon/Projects/pix2pixHD/datasets/preprocessing-d20210831_vertical_slice/"
+result_path = "/home/jeonghoon/Projects/pix2pixHD/results/0910Slice_3slices/test_latest"
+input_path = "/home/jeonghoon/Projects/pix2pixHD/datasets/preprocessing-d20210910_vertical_slice/"
 
 result_files = os.listdir(result_path + "/images/")
 
@@ -25,6 +25,9 @@ def concatenate_horizontally(img_array):
         x_offset += im.size[0]
     
     return new_im
+
+os.makedirs(f"{result_path}/diff/")
+os.makedirs(f"{result_path}/merged/")
 
 for file in result_files:
     if file.endswith(input_suffix):
